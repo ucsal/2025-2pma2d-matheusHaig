@@ -1,7 +1,13 @@
 package br.com.mariojp.solid.dip;
 
 public class EmailNotifier {
-	private final SmtpClient smtp = new SmtpClient();
+	private final MailSender smtp = new MailSender() {
+        @Override
+        public void send(String to, String subject, String body) {
+
+        }
+    };
+
 
 	public void welcome(User user) {
 		if ("true".equalsIgnoreCase(System.getProperty("DRY_RUN"))) {
